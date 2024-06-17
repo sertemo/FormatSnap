@@ -10,6 +10,8 @@ packages = [{include = "formatsnap", from = "src"}]
 python = "^3.10"
 toml = "^0.10.2"
 python-dotenv = "^1.0.1"
+pillow = "^10.3.0"
+flask = "^3.0.3"
 
 
 [tool.poetry.group.dev.dependencies]

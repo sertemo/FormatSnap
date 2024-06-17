@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div id="drop-area">
+        <form id="form" enctype="multipart/form-data">
+            <p>Arrastra y suelta una imagen aquí o <label for="fileElem" id="fileLabel">selecciona una</label>.</p>
+            <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
+            <div id="gallery"></div>
+            <select id="formatSelect">
+                <option value="JPEG">JPEG</option>
+                <option value="PNG">PNG</option>
+                <option value="GIF">GIF</option>
+                <option value="BMP">BMP</option>
+            </select>
+            <button type="button" onclick="convertImage()">Convertir</button>
+        </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
