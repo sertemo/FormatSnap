@@ -1,4 +1,3 @@
-
 # Copyright 2024 Sergio Tejedor Moreno
 
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,32 +12,41 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import io
+import os
+
 from flask import Flask, request, send_file, render_template
 from PIL import Image
-import io
 
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return render_template('src/formatsnap/templates/index.html')
 
-@app.route('/convert', methods=['POST'])
+@app.route("/", methods=["POST", "GET"])
 def convert():
-    file = request.files['file']
-    format = request.form['format']
-    img = Image.open(file.stream)
-    
-    img_byte_arr = io.BytesIO()
-    img.save(img_byte_arr, format=format)
-    img_byte_arr.seek(0)
+    if request.method == "POST":
+        if "file" not in request.files:
+            return "No image uploaded", 400
 
-    return send_file(
-        img_byte_arr,
-        mimetype=f'image/{format.lower()}',
-        as_attachment=True,
-        download_name=f'converted.{format.lower()}'
+        file = request.files["file"]
+
+        filename, _ = os.path.splitext(file.filename)
+
+        format = request.form["format"]
+        img = Image.open(file.stream)
+
+        img_byte_arr = io.BytesIO()
+        img.save(img_byte_arr, format=format)
+        img_byte_arr.seek(0)
+
+        return send_file(
+            img_byte_arr,
+            mimetype=f"image/{format.lower()}",
+            as_attachment=True,
+            download_name=f"{filename}.{format.lower()}",
         )
 
-if __name__ == '__main__':
+    return render_template("index.html")
+
+
+if __name__ == "__main__":
     app.run(debug=True, port=6969)

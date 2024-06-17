@@ -6,20 +6,18 @@
 ![GitHub](https://img.shields.io/github/license/sertemo/FormatSnap)
 
 ## Descripción
+Pequeña web app para convertir imágenes de un formato a otro. Se usa la librería **Pillow** de Python para realizar dicha conversión.
 
-## Empezando
-
-### Pre-requisitos
-
-### Instalación
 
 ## Uso
+Para usar la aplicación hay que navegar a `http://trymlmodels.com:6969` y arrastrar una imagen o pinchar sobre en enlace **'selecciona una'**.
+
+![alt text](<assets/img/preview app.JPG>)
+
+Selecciona el formato deseado y pincha en el botón **Convertir**. Se descargará una imagen con el mismo nombre que la imagen original pero en el formato especificado.
 
 ## Desarrollo
-
-### Código de Conducta
-
-### Proceso de Pull Request
+Docker
 
 ## SemVer
 
