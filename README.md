@@ -4,22 +4,22 @@
 ![Tests](https://github.com/sertemo/FormatSnap/actions/workflows/tests.yml/badge.svg)
 ![Dependabot](https://img.shields.io/badge/dependabot-enabled-blue.svg?logo=dependabot)
 ![GitHub](https://img.shields.io/github/license/sertemo/FormatSnap)
+![Docker](https://img.shields.io/docker/image-size/sertemo/dogimobot?color=blue&logo=docker)
 
 ## Descripción
 Pequeña web app para convertir imágenes de un formato a otro. Se usa la librería **Pillow** de Python para realizar dicha conversión.
 
+La aplicación se conteneriza dentro de un **Docker** que se almacenará en mi servidor personal.
 
 ## Uso
-Para usar la aplicación hay que navegar a `http://trymlmodels.com:6969` y arrastrar una imagen o pinchar sobre en enlace **'selecciona una'**.
+Para usar la aplicación hay que navegar a `http://trymlmodels.com:6969` y arrastrar una imagen o pinchar sobre el enlace **'selecciona una'**.
 
 ![alt text](<assets/img/preview app.JPG>)
 
 Selecciona el formato deseado y pincha en el botón **Convertir**. Se descargará una imagen con el mismo nombre que la imagen original pero en el formato especificado.
 
-## Desarrollo
-Docker
-
 ## SemVer
+- 0.1.0 : Versión inicial
 
 ## Tests
 ![Pytest](https://img.shields.io/badge/testing-pytest-blue.svg)
@@ -35,10 +35,6 @@ Docker
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)
 ![Pillow](https://img.shields.io/badge/pillow-%2338354C.svg?style=for-the-badge&logo=pillow&logoColor=white)
-
-
-
-## Contribuyentes
 
 ## Licencia
 Copyright 2024 Sergio Tejedor Moreno

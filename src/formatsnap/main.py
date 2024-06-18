@@ -29,7 +29,10 @@ def convert():
 
         file = request.files["file"]
 
-        filename, _ = os.path.splitext(file.filename)
+        if file.filename:
+            filename, _ = os.path.splitext(file.filename)
+        else:
+            return "No filename provided", 400
 
         format = request.form["format"]
         img = Image.open(file.stream)
