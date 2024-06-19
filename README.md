@@ -14,12 +14,13 @@ La aplicación se conteneriza dentro de un **Docker** que se almacenará en mi s
 ## Uso
 Para usar la aplicación hay que navegar a `http://trymlmodels.com:6969` y arrastrar una imagen o pinchar sobre el enlace **'selecciona una'**.
 
-![alt text](<assets/img/preview app.JPG>)
+![alt text](<assets/img/preview formatsnap.JPG>)
 
 Selecciona el formato deseado y pincha en el botón **Convertir**. Se descargará una imagen con el mismo nombre que la imagen original pero en el formato especificado.
 
 ## SemVer
 - 0.1.0 : Versión inicial
+- 0.2.0 : Se cambia ligeramente el estilo. Se agrega el título en el body. Se agrega validación para el arrastre de archivos. Se agrega funcionalidad para convertir imágenes animadas webp o gif y conservar la animación. Se convierte la imagen a RGB si el formato de salida es JPEG para evitar excepción.
 
 ## Tests
 ![Pytest](https://img.shields.io/badge/testing-pytest-blue.svg)

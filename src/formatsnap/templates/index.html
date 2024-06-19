@@ -9,26 +9,33 @@
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 </head>
 <body>
-    <div id="drop-area">
-        <form id="form" enctype="multipart/form-data">
-            <p>Arrastra y suelta una imagen aquí o <label for="fileElem" id="fileLabel">selecciona una</label>.</p>
-            <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
-            <div id="gallery"></div>
-            <button type="button" id="clearBtn" onclick="clearImage()" style="display: none;" title="Eliminar imagen">X</button>
-            <select id="formatSelect">
-                <option value="JPEG">JPEG</option>
-                <option value="PNG">PNG</option>
-                <option value="GIF">GIF</option>
-                <option value="BMP">BMP</option>
-                <option value="ICO">ICO</option>
-            </select>
-            <button type="button" onclick="convertImage()">Convertir</button>
-            <p id="error-message" style="color: red; display: none;">Debes cargar una imagen antes de convertir.</p>
-            <p id="same-format-error" style="color: red; display: none;">No es posible convertir al mismo formato.</p>
-        </form>
+    <div class="container">
+        <h1 class="title">FormatSnap</h1>
+        <p class="subtitle">EZ Image format converter</p>
+        <div id="drop-area">
+            <form id="form" enctype="multipart/form-data">
+                <p>Arrastra y suelta una imagen aquí o <label for="fileElem" id="fileLabel">sube una</label>.</p>
+                <input type="file" id="fileElem" accept="image/*" onchange="handleFiles(this.files)">
+                <div id="gallery"></div>
+                <button type="button" id="clearBtn" onclick="clearImage()" style="display: none;" title="Eliminar imagen">x</button>
+                <div class="form-controls">
+                    <select id="formatSelect">
+                        <option value="JPEG">JPEG</option>
+                        <option value="PNG">PNG</option>
+                        <option value="GIF">GIF</option>
+                        <option value="BMP">BMP</option>
+                        <option value="ICO">ICO</option>
+                        <option value="TIFF">TIFF</option>
+                        <option value="WEBP">WEBP</option>
+                    </select>
+                    <button type="button" onclick="convertImage()">Convertir</button>
+                </div>
+                <p id="error-message" style="color: red; display: none;">Debes cargar una imagen antes de convertir.</p>
+                <p id="same-format-error" style="color: red; display: none;">No es posible convertir al mismo formato.</p>
+            </form>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </body>
 </html>
-

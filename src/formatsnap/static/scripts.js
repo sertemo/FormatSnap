@@ -7,6 +7,8 @@ let sameFormatError = document.getElementById('same-format-error');
 let formData = new FormData();
 let loadedFileFormat = ''; // Variable para almacenar el formato del archivo cargado
 
+const imageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/bmp', 'image/ico', 'image/tiff', 'image/webp'];
+
 ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
     dropArea.addEventListener(eventName, preventDefaults, false)
 });
@@ -34,6 +36,11 @@ function handleDrop(e) {
 
 function handleFiles(files) {
     [...files].forEach(file => {
+        // Validación de tipos de archivo
+        if (!imageTypes.includes(file.type)) {
+            alert('Tipo de archivo no admitido.');
+            return;
+        }
         formData.append('file', file);
         loadedFileFormat = file.name.split('.').pop().toUpperCase(); // Obtiene el formato del archivo cargado
         previewFile(file);
@@ -63,6 +70,8 @@ function clearImage() {
     clearBtn.style.display = 'none'; // Ocultar botón de limpiar
     formData.delete('file');
     loadedFileFormat = ''; // Reiniciar el formato del archivo cargado
+    errorMessage.style.display = 'none'; // Ocultar mensaje de error
+    sameFormatError.style.display = 'none'; // Ocultar mensaje de error
 }
 
 function convertImage() {

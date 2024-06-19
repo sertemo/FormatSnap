@@ -16,7 +16,7 @@ import io
 import os
 
 from flask import Flask, request, send_file, render_template
-from PIL import Image
+from PIL import Image, ImageSequence
 
 app = Flask(__name__)
 
@@ -38,7 +38,26 @@ def convert():
         img = Image.open(file.stream)
 
         img_byte_arr = io.BytesIO()
-        img.save(img_byte_arr, format=format)
+
+        # Chequeamos si la imagen está animada
+        is_animated = getattr(img, "is_animated", False)
+        print(is_animated)
+
+        if is_animated and format in {"GIF", "WEBP"}:
+            frames = [frame.copy() for frame in ImageSequence.Iterator(img)]
+            frames[0].save(
+                img_byte_arr,
+                format=format,
+                save_all=True,
+                append_images=frames[1:],
+                loop=0,
+            )
+        else:
+            # Convertir la imagen a RGB si el formato de salida es JPEG
+            if format.upper() == "JPEG" and img.mode in ("RGBA", "P"):
+                img = img.convert("RGB")
+            img.save(img_byte_arr, format=format)
+
         img_byte_arr.seek(0)
 
         return send_file(
