@@ -5,7 +5,12 @@ FROM python:3.10-slim
 WORKDIR /app
 
 # Instalar dependencias y curl para descargar poetry
-RUN apt-get update && apt-get install -y curl gcc libc-dev make && \
+RUN apt-get update && apt-get install -y \
+    curl \
+    gcc \
+    libc-dev \
+    make \
+    libheif-dev && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -29,6 +34,8 @@ RUN poetry install --no-dev --no-interaction --no-ansi
 
 # Instalar gunicorn soportado por Flask
 RUN poetry add gunicorn
+# Instalar pyheif para manejar archivos HEIC
+RUN poetry add pyheif
 
 # Copiar el resto del código fuente al contenedor
 COPY . /app

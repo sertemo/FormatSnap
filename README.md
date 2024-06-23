@@ -21,6 +21,7 @@ Selecciona el formato deseado y pincha en el botón **Convertir**. Se descargar�
 ## SemVer
 - 0.1.0 : Versión inicial
 - 0.2.0 : Se cambia ligeramente el estilo. Se agrega el título en el body. Se agrega validación para el arrastre de archivos. Se agrega funcionalidad para convertir imágenes animadas webp o gif y conservar la animación. Se convierte la imagen a RGB si el formato de salida es JPEG para evitar excepción.
+- 0.3.0 : Se agrega el formato `HEIC` como formato de partida para convertir. Se utiliza la librería pyheif para la gestión de este tipo de formato
 
 ## Tests
 ![Pytest](https://img.shields.io/badge/testing-pytest-blue.svg)

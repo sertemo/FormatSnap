@@ -17,6 +17,7 @@ import os
 
 from flask import Flask, request, send_file, render_template
 from PIL import Image, ImageSequence
+import pyheif
 
 app = Flask(__name__)
 
@@ -34,14 +35,25 @@ def convert():
         else:
             return "No filename provided", 400
 
-        format = request.form["format"]
-        img = Image.open(file.stream)
+        format = request.form["format"].upper()
+        
+        if file.filename.lower().endswith('.heic'):
+            heif_file = pyheif.read(file.read())
+            img = Image.frombytes(
+                heif_file.mode, 
+                heif_file.size, 
+                heif_file.data,
+                "raw",
+                heif_file.mode,
+                heif_file.stride,
+            )
+        else:
+            img = Image.open(file.stream)
 
         img_byte_arr = io.BytesIO()
 
         # Chequeamos si la imagen está animada
         is_animated = getattr(img, "is_animated", False)
-        print(is_animated)
 
         if is_animated and format in {"GIF", "WEBP"}:
             frames = [frame.copy() for frame in ImageSequence.Iterator(img)]
