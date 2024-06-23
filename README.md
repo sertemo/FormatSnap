@@ -1,5 +1,5 @@
 # FormatSnap
-### v0.2.0
+### v0.3.0
 
 ![Tests](https://github.com/sertemo/FormatSnap/actions/workflows/tests.yml/badge.svg)
 ![Dependabot](https://img.shields.io/badge/dependabot-enabled-blue.svg?logo=dependabot)
