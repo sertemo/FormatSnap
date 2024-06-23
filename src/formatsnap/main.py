@@ -36,12 +36,12 @@ def convert():
             return "No filename provided", 400
 
         format = request.form["format"].upper()
-        
-        if file.filename.lower().endswith('.heic'):
+
+        if file.filename.lower().endswith(".heic"):
             heif_file = pyheif.read(file.read())
             img = Image.frombytes(
-                heif_file.mode, 
-                heif_file.size, 
+                heif_file.mode,
+                heif_file.size,
                 heif_file.data,
                 "raw",
                 heif_file.mode,
