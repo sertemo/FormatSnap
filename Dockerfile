@@ -44,4 +44,4 @@ COPY . /app
 EXPOSE 6969
 
 # Comando para ejecutar el servidor en modo producción
-CMD ["gunicorn", "-b", "0.0.0.0:6969", "src.formatsnap.main:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:6969", "src.formatsnap.main:app", "--workers", "4", "--timeout", "120"]
