@@ -23,6 +23,9 @@ Selecciona el formato deseado y pincha en el botón **Convertir**. Se descargar�
 - 0.2.0 : Se cambia ligeramente el estilo. Se agrega el título en el body. Se agrega validación para el arrastre de archivos. Se agrega funcionalidad para convertir imágenes animadas webp o gif y conservar la animación. Se convierte la imagen a RGB si el formato de salida es JPEG para evitar excepción.
 - 0.3.0 : Se agrega el formato `HEIC` como formato de partida para convertir. Se utiliza la librería pyheif para la gestión de este tipo de formato
 
+## Updates
+- 09/09/2024 : Se carga el contenedor en un **Cloud Run** de GCP llamado formatsnap2. Importante indicar el puerto en el que escucha la app en la definición de la **function**. Se crea un subdominio llamado `formatsnap.trymlmodels.com`. Para ello, en porkbun, se pide un certificado SSL, que es gratuito, y se verifica en Cloud run mediante el administrador de dominios personalizados, el nuevo dominio asignado. GCP te dirá qué tipo de record crear en porkbun y qué tipo de campos. La nueva URL de la aplicación es `https://formatsnap.trylmodels.com`
+
 ## Tests
 ![Pytest](https://img.shields.io/badge/testing-pytest-blue.svg)
 ![Black](https://img.shields.io/badge/code%20style-black-blue.svg)
