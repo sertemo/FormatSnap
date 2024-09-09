@@ -40,8 +40,5 @@ RUN poetry add pyheif
 # Copiar el resto del código fuente al contenedor
 COPY . /app
 
-# Exponer el puerto en el que uvicorn estará escuchando
-EXPOSE 6969
-
 # Comando para ejecutar el servidor en modo producción
-CMD ["gunicorn", "-b", "0.0.0.0:6969", "src.formatsnap.main:app", "--workers", "4", "--timeout", "120"]
+CMD ["gunicorn", "-b", "0.0.0.0:${PORT}", "src.formatsnap.main:app"]

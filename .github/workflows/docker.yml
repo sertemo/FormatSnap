@@ -34,4 +34,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: sertemo/formatsnap:latest
+          tags: sertemo/formatsnap:gcp  # Imagen específica para GCP usar variable PORT
